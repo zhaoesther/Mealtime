@@ -22,15 +22,6 @@ $(document).ready( function() {
     	$("#panel").hide(500);
     });
 
-    // Navbar Active Selection
-    $('navbar a.nav-item').click(function()
-    {
-      $('navbar a.nav-item').find(".active").removeClass(" active");
-      $(this).parent().addClass(" active");
-      setNavigation();
-      console.log("Figure out how to change active class");
-    });
-
     window.onclick = function(event) {
         if (event.target != document.getElementById('mainnav') && event.target !=document.getElementById('opensidebar') && event.target !=document.getElementById('closesidebar')) {
             closeNav();
@@ -91,6 +82,9 @@ $(document).ready( function() {
             // push data to local storage
             console.log(kitchenobject);
             localStorage.setItem('kitchen',JSON.stringify(kitchenobject));
+
+            // on click show snackbar
+            snackbarshow();
         }
     });
 
@@ -151,9 +145,11 @@ $(document).ready( function() {
 
 
     $('#clear-kitchen').click(function() {
-      $('#kitchen-panel-list').empty();
-      $('#empty-message').show();
-      localStorage.removeItem("kitchen");
+        if ($('#empty-message').is(":hidden") && confirm("Are you sure you want to empty your kitchen?")) {
+            $('#kitchen-panel-list').empty();
+            $('#empty-message').show();
+            localStorage.removeItem("kitchen");
+        }
     });
 
     $('#find-recipes-button').click(function() {
@@ -197,4 +193,15 @@ function closeNav() {
     document.getElementById("main").style.marginLeft = "0";
     $("#opensidebar").show();
     $("#closesidebar").hide();
+}
+
+function snackbarshow() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
 }
