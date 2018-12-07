@@ -404,7 +404,8 @@ a.nav-item {
   background-color: #ffcb3d;
 }
 
-#snackbar {
+#snackbaradd,
+#snackbarremove {
     visibility: hidden; /* Hidden by default. Visible on click */
     min-width: 250px; /* Set a default minimum width */
     margin-left: -125px; /* Divide value of min-width by 2 */
@@ -416,10 +417,12 @@ a.nav-item {
     position: fixed; /* Sit on top of the screen */
     z-index: 1; /* Add a z-index if needed */
     left: 50%; /* Center the snackbar */
-    bottom: 30px; /* 30px from the bottom */
+	bottom: 30px; /* 30px from the bottom */
+	transform: translateX(-15%)
 }
 
-#snackbar.show {
+#snackbaradd.show,
+#snackbarremove.show {
     visibility: visible; /* Show the snackbar */
     /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
    However, delay the fade out process for 2.5 seconds */

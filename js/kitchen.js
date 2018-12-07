@@ -141,6 +141,7 @@ $(document).ready( function() {
         console.log(kitchenobjects);
         localStorage.setItem('kitchen',JSON.stringify(kitchenobjects));
 
+        snackbarremoveshow();
     })
 
 
@@ -197,7 +198,18 @@ function closeNav() {
 
 function snackbarshow() {
     // Get the snackbar DIV
-    var x = document.getElementById("snackbar");
+    var x = document.getElementById("snackbaradd");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+}
+
+function snackbarremoveshow() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbarremove");
 
     // Add the "show" class to DIV
     x.className = "show";
