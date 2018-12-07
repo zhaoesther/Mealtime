@@ -83,10 +83,12 @@ function emptymessage() {
 }
 
 $('#clear-favorites').click(function() {
-    $('#templatedfavorites').empty();
-    $('#empty-message').show();
-    localStorage.removeItem("favoritedrecipes");
-    console.log('Favorites Cleared!');
+    if ($('#empty-message').is(":hidden") && confirm("Are you sure you want to clear your favorites?")) {
+        $('#templatedfavorites').empty();
+        $('#empty-message').show();
+        localStorage.removeItem("favoritedrecipes");
+        console.log('Favorites Cleared!');
+    }
   });
 
 

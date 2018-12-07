@@ -234,40 +234,40 @@ var recipes_tomato = [
 $('#ingredientslist').on("click",'.recipe-ingredient',function() {
     // console.log('go to kitchen...');
     // window.location.href="./kitchen.html"
-
-    console.log("click delete!");
-    var localitemref = JSON.parse(localStorage.getItem("kitchen"));
-    var kitchenobjects = [];
-    if (localitemref != null) {
-        for (i=0; i < localitemref.length; i++) {
-            kitchenobjects.push(localitemref[i]);
-        }
-        for (i=0; i < kitchenobjects.length; i++) {
-            console.log(kitchenobjects[i]);
-            if (kitchenobjects[i].inv == $(this).text().trim())
-            {
-                kitchenobjects.splice(i,1);
-                break;
+    if (confirm("Remove this ingredient?")) {
+        console.log("click delete!");
+        var localitemref = JSON.parse(localStorage.getItem("kitchen"));
+        var kitchenobjects = [];
+        if (localitemref != null) {
+            for (i=0; i < localitemref.length; i++) {
+                kitchenobjects.push(localitemref[i]);
+            }
+            for (i=0; i < kitchenobjects.length; i++) {
+                console.log(kitchenobjects[i]);
+                if (kitchenobjects[i].inv == $(this).text().trim())
+                {
+                    kitchenobjects.splice(i,1);
+                    break;
+                }
             }
         }
-    }
-    console.log($(this).text().trim());
-    
-    // remove button from kitchen
-    $(this).hide();
-
-    if (kitchenobjects.length <1) {
-        kitchenobjects = null;
-        $('#empty-message').show();
-        $('#recipelist').hide();
-        $('#recipelist2').hide();
-    }
+        console.log($(this).text().trim());
         
-    // push data to local storage
-    console.log(kitchenobjects);
-    localStorage.setItem('kitchen',JSON.stringify(kitchenobjects));
-    window.location.reload();
+        // remove button from kitchen
+        $(this).hide();
 
+        if (kitchenobjects.length <1) {
+            kitchenobjects = null;
+            $('#empty-message').show();
+            $('#recipelist').hide();
+            $('#recipelist2').hide();
+        }
+            
+        // push data to local storage
+        console.log(kitchenobjects);
+        localStorage.setItem('kitchen',JSON.stringify(kitchenobjects));
+        window.location.reload();
+    }
 });
 
 $('#anyBtn').click(function() {

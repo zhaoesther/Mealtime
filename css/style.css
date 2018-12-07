@@ -459,6 +459,10 @@ a.nav-item {
 	font-size: 25px;
 }
 
+.recipe-ingredient:hover {
+	background-color: rgb(255, 124, 16);
+}
+
 #ingredientslist {
 	border-color: #000;
 	border: 2px solid;
